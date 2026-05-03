@@ -1,0 +1,671 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Template for AIMS Rwanda Assignments         %%%              %%%
+%%% Author:   AIMS Rwanda tutors                             %%%   ###        %%%
+%%% Email: tutors2017-18@aims.ac.rw                               %%%   ###        %%%
+%%% Copyright: This template was designed to be used for    %%% #######      %%%
+%%% the assignments at AIMS Rwanda during the academic year %%%   ###        %%%
+%%% 2017-2018.                                              %%%   #########  %%%
+%%% You are free to alter any part of this document for     %%%   ###   ###  %%%
+%%% yourself and for distribution.                          %%%   ###   ###  %%%
+%%%                                                         %%%              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%% Ensure that you do not write the questions before each of the solutions because it is not necessary. %%%%%% 
+
+\documentclass[12pt,a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% packages %%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{tabulary}
+
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{placeins}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{psfrag}
+\usepackage{tasks}
+
+
+
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+
+\definecolor{codeblue}{rgb}{0.2,0.4,0.6}
+\definecolor{codegray}{rgb}{0.9,0.9,0.9}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codegray},
+    commentstyle=\color{green!50!black},
+    keywordstyle=\color{codeblue},
+    stringstyle=\color{orange},
+    breaklines=true,
+    showstringspaces=false,
+    frame=single
+}
+
+%%%%%%%%%%%%%%%%%%%%% students data %%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\student}{\textbf{Dr. Ali Imran Sandhu}}
+\newcommand{\course}{\textbf{EE321 Intro to AI}}
+\newcommand{\assignment}{\textbf{1}}
+
+%%%%%%%%%%%%%%%%%%% using theorem style %%%%%%%%%%%%%%%%%%%%
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exa}[thm]{Example}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{coro}[thm]{Corollary}
+\newtheorem{quest}{Question}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{lipsum}%% a garbage package you don't need except to create examples.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\lhead{Azamuke Denish}
+\rhead{ \thepage}
+%\cfoot{\textbf{AIMS Rwanda Academic Year 2020 - 2021}}
+\renewcommand{\headrulewidth}{0.1pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%%%%%%%%%%%%%%  Shortcut for usual set of numbers  %%%%%%%%%%%
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%% title page %%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\begin{center}
+	\includegraphics[scale = 0.8]{}
+\begin{figure}
+	    \centering
+	    \includegraphics[width=0.5\linewidth]{	\includegraphics[scale = 0.8]{}}
+\begin{figure}
+	     \centering
+	     \includegraphics[width=0.75\linewidth]{image.png}
+	   
+	 \end{figure}
+	 	 
+	\end{figure}
+		%\textbf{AFRICAN INSTITUTE FOR MATHEMATICAL SCIENCES \\[0.5cm]
+	%(AIMS RWANDA, KIGALI)}
+	%\vspace{0.1mm}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%% assignment information %%%%%%%%%%%%%%%%
+\noindent
+\rule{17cm}{0.2cm}\\[0.3cm]
+% Instructor: \student \hfill Quiz Number: \rule{1.5cm}{0.01cm}\\[2mm]
+Course: \course \hfill \textbf{Complex Engineering Problem}\\
+[2mm]
+Name:  Talaya Tabassum  \hfill Reg.: 2023720
+% \textbf{\color{red}{Solutions without reasoning will be penalized!!!}}\\
+\rule{17cm}{0.05cm}
+\vspace{1.0mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{tcolorbox}[colback=red!5!white, colframe=red!70!black, title=⚠️ IMPORTANT: This is an INDIVIDUAL project]
+\begin{center}
+\textbf{You must run the code yourself.} \\
+The exam will ask specific questions about YOUR model's behavior. \\
+If you copy from the internet, you will likely to fail the viva/exam.
+\end{center}
+\end{tcolorbox}
+
+\section*{Your Must}
+Build an appropriate AI model that can tell whether a picture contains a \textbf{hot dog} or \textbf{not a hot dog}.
+
+\section*{Learning Objectives}
+By the end of this project, you will be able to:
+\begin{itemize}
+    \item Load and explore image data
+    \item Build an ANN and a CNN in TensorFlow/Keras
+    \item Identify and fix overfitting using Dropout and Data Augmentation
+    \item Plot and interpret training curves
+    \item Test your model on real-world images
+\end{itemize}
+
+\section*{Dataset}
+You will use the \textbf{Hot Dog / Not Hot Dog} dataset from Kaggle: \\
+\url{https://www.kaggle.com/datasets/dansbecker/hot-dog-not-hot-dog}
+
+\section*{What You Need}
+\begin{itemize}
+    \item A Google account (for Google Colab)
+    \item The dataset downloaded to your computer (upload to Colab)
+    \item {\color{red}{Submit your overleaf generated PDF by May 07, 2026 by 12:00 PM}}
+\end{itemize}
+
+\section*{Grading Rubric}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Task} & \textbf{Points} \\
+\hline
+Step 2: Data Exploration (answers) & 5 \\
+Step 3: Visualization (screenshot) & 5 \\
+Step 5: ANN Model (accuracy + analysis) & 10 \\
+Step 6: CNN Model (accuracy + comparison) & 15 \\
+Step 7: Overfitting Fix (before/after plots) & 20 \\
+Step 8: Real Image Test (screenshot) & 10 \\
+Step 9: Answers to all questions & 20 \\
+Step 10: YOLO Extension (extra credit) & 5 \\
+\hline
+\textbf{Total} & \textbf{85 + 5 EC} \\
+\hline
+\end{tabular}
+
+\newpage
+
+\section*{Step 1: Setup Google Colab}
+
+Follow these instructions carefully:
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!70!black, title=How to Run This Project in Google Colab]
+\begin{enumerate}
+    \item Go to \url{https://colab.research.google.com}
+    \item Click \textbf{File → New Notebook}
+    \item Rename it: \texttt{HotDog\_Classifier\_YourName.ipynb}
+    \item For each code block below:
+    \begin{itemize}
+        \item Click the \texttt{+ Code} button
+        \item Copy the code into the cell
+        \item Press \texttt{Shift + Enter} to run
+    \end{itemize}
+    \item To upload the dataset:
+    \begin{itemize}
+        \item Click the folder icon on the left sidebar
+        \item Click the \textbf{Upload} button (↑)
+        \item Upload the \texttt{hot-dog-not-hot-dog.zip} file
+        \item Run: \texttt{!unzip hot-dog-not-hot-dog.zip}
+    \end{itemize}
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+\noindent \textbf{Your answers:} Write your answers directly below each question in this handout.
+
+\newpage
+
+\section*{Step 2: Import Libraries}
+Run this code in Colab:
+\begin{lstlisting}[language=Python, ]
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import os
+import random
+
+print("Libraries loaded successfully!")
+print("TensorFlow version:", tf.__version__)
+\end{lstlisting}
+% \begin{figure}[!h]
+%     \includegraphics[width=\textwidth]{import_lib.png}
+% \end{figure}
+\begin{enumerate}
+    \item What TensorFlow version are you using?
+ \newline\vspace{1cm} TensorFlow version : 2.20.0 
+\end{enumerate}
+% \newpage
+
+\section*{Step 3: Load and Explore the Data}
+Run this code to see how many images you have:
+\begin{lstlisting}[language=Python]
+
+# Define paths (CHANGE THIS to your actual path)
+train_path = "/content/hot-dog-not-hot-dog/train"
+test_path = "/content/hot-dog-not-hot-dog/test"
+# Count images
+hot_dog_count = len(os.listdir(os.path.join(train_path, "hot_dog")))
+not_hot_dog_count = len(os.listdir(os.path.join(train_path, "not_hot_dog")))
+print(f"Hot dog images: {hot_dog_count}")
+print(f"Not hot dog images: {not_hot_dog_count}")
+# YOUR CODE HERE: Print the number of test images
+# Hint: Look at the code above and modify it for test_path
+#
+#
+% \end{lstlisting}
+% \begin{figure}[!h]
+%     \includegraphics[width=\textwidth]{data_1.png}
+% \end{figure}
+\begin{enumerate}
+    \item How many training images are in each class?
+    \newline \textcolor{blue}{Hot dog images (train): 249}  
+\newline \textcolor{blue}{Not hot dog images (train): 249 
+\newline Hot dog images (test): 250 
+\newline Not hot dog images (test): 250 }
+    \item Is the dataset balanced? Why does that matter?
+    \vfill\newline\textcolor{blue} { Yes Data Set is balanced and it matters because only then it can give accurate results.}
+\end{enumerate}
+\newpage
+
+
+
+\newpage
+
+\section*{Step 4: Visualize the Data}
+
+\begin{lstlisting}[language=Python]
+# Display 6 random images
+plt.figure(figsize=(12, 6))
+for i in range(6):
+    # Pick random class
+    class_name = random.choice(["hot_dog", "not_hot_dog"])
+    class_path = os.path.join(train_path, class_name)
+    img_name = random.choice(os.listdir(class_path))
+    img_path = os.path.join(class_path, img_name)
+    # Load and show image
+    img = plt.imread(img_path)
+    plt.subplot(2, 3, i+1)
+    plt.imshow(img)
+    plt.title(class_name)
+    plt.axis('off')
+plt.tight_layout()
+plt.show()
+# YOUR CODE HERE: Print the shape (height, width, channels) of one image. Hint: Use img.shape after loading an image
+#
+#
+\end{lstlisting}
+
+\begin{enumerate}
+    \item Paste a screenshot of your 6 random images here:
+\begin{center}
+    \centering
+    \includegraphics[width=0.5\linewidth]{1.png}
+   }
+\end{center}
+        \item What is the shape (height, width, channels) of a typical image? 
+\newline \textcolor{blue}{(512, 384, 3) }  
+\end{enumerate}
+
+
+
+
+% \subsection*{Question 4.1: \small{Paste a screenshot of your 6 random images here:}}
+% \vspace{10cm}
+
+% \subsection*{Question 4.2: \small{What is the shape (height, width, channels) of a typical image? (Use \texttt{img.shape})}}
+
+
+\newpage
+
+\section*{Step 5: Prepare the Data Generator}
+
+\begin{lstlisting}[language=Python]
+# Set image size (YOUR CHOICE: 64x64 is faster, 128x128 is more accurate)
+IMG_HEIGHT = 64
+IMG_WIDTH = 64
+BATCH_SIZE = 32
+# Create generators with automatic labeling
+train_datagen = ImageDataGenerator(
+    rescale=1./255, # Normalize pixel values from 0-255 to 0-1
+    validation_split=0.2 # Use 20% of training data for validation
+)
+
+train_generator = train_datagen.flow_from_directory(
+    train_path,
+    target_size=(IMG_HEIGHT, IMG_WIDTH),
+    batch_size=BATCH_SIZE,
+    class_mode='binary', # Binary classification (hot dog vs not)
+    subset='training' # Training set (80% of data)
+)
+
+validation_generator = train_datagen.flow_from_directory(
+    train_path,
+    target_size=(IMG_HEIGHT, IMG_WIDTH),
+    batch_size=BATCH_SIZE,
+    class_mode='binary',
+    subset='validation' # Validation set (20% of data)
+)
+# YOUR CODE HERE: Print the class labels 
+#
+# Hint: Print train_generator.class_indices
+\end{lstlisting}
+\begin{enumerate}
+    \item What does class label 0 represent? What does 1 represent?
+\end{enumerate}
+\newline \textcolor{blue}{ 0: Hot dog    1:Not Hot Dog}
+
+
+\newpage
+
+\section*{Step 6: Build a Simple ANN (It Will Fail)}
+We try the worst possible architecture first to prove why CNNs are better.
+\begin{lstlisting}[language=Python]
+# Build a simple ANN
+ann_model = keras.Sequential([
+    # Flatten the 2D image into 1D
+    layers.Flatten(input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+    # Dense layers
+    layers.Dense(128, activation='relu'),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(1, activation='sigmoid') # Output: probability of "hot dog"
+])
+# Compile the model
+ann_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+# Show model summary
+ann_model.summary()
+# Train for 10 epochs
+history_ann = ann_model.fit(train_generator, validation_data=validation_generator, epochs=10)
+# YOUR CODE HERE: Plot training vs validation accuracy. 
+#
+#
+# Hint: Use 
+#   plt.plot(history_ann.history['XXXX'], label='XXXX')
+#   plt.plot(history_ann.history['XXXX'], label='XXXX')
+\end{lstlisting}
+\begin{enumerate}
+    \item What was the final validation accuracy of the ANN?
+    \newline\textcolor{blue}{    0.5204  }
+    \item Why does the ANN perform poorly on image data? (One sentence) \newline \textcolor{blue}{ANN is One-Dimension which is why it doesn't perform well on image data}
+
+    \item Paste a screenshot of your training output (showing the accuracy values): 
+\end{enumerate}
+\begin{center}
+    \centering
+    \includegraphics[width=0.5\linewidth]{2.png}
+
+\end{figure}
+
+\newpage
+
+\section*{Step 7: Build a CNN}
+Now we use Convolutional and Pooling layers.
+\begin{lstlisting}[language=Python]
+cnn_model = keras.Sequential([
+    # First Conv layer: 32 filters, 3x3 kernel
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+    layers.MaxPooling2D((2, 2)),
+    # Second Conv layer: 64 filters
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    # Third Conv layer (YOUR TURN): Add 64 filters with 3x3 kernel, followed by Max pooling
+    # YOUR CODE HERE:
+    #
+    #
+    # Flatten and dense layers
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])
+# Compile (copy from ANN)
+# YOUR CODE HERE:
+#
+#
+#
+#
+# Hint: use optimizer = adam, loss = binary_crossentropy, and metrics = accuracy
+
+# Train the CNN
+history_cnn = cnn_model.fit(train_generator, validation_data=validation_generator, epochs=15)
+\end{lstlisting}
+\begin{enumerate}
+    \item What was the final validation accuracy of the CNN?
+   \newline \textcolor{blue}{0.6224}  
+    \item Compare ANN vs CNN. Which one performed better and why? \newline \textcolor{blue}{CNN:as CNN is 2-Dimensional}
+    \newpage
+    \item Paste the accuracy plot comparing ANN and CNN: (Use the code below to generate the plot)
+    \begin{lstlisting}[language=Python]
+    plt.plot(history_ann.history['val_accuracy'], label='ANN Validation', marker='o')
+    plt.plot(history_cnn.history['val_accuracy'], label='CNN Validation', marker='s')
+    plt.xlabel('Epoch')
+    plt.ylabel('Validation Accuracy')
+    plt.legend()
+    plt.title('ANN vs CNN Validation Accuracy')
+    plt.grid(True)
+    plt.show()
+    \end{lstlisting}
+\end{enumerate}
+\begin{center}
+    \centering
+    \includegraphics[width=0.5\linewidth]{3.png}
+   
+\end{figure}
+
+\newpage
+
+\section*{Step 8: Fix Overfitting (Most Important)}
+
+You may notice: Training accuracy is high (98\%), Validation accuracy is low (70\%). This is OVERFITTING. The model memorized the training images but doesn't generalize.
+\\
+
+\noindent Your task: Modify the model below to fix overfitting using Dropout and Data Augmentation.
+
+\subsection*{8.1 Fix 1: Add Dropout}
+
+\begin{lstlisting}[language=Python]
+from tensorflow.keras import regularizers
+
+# Add dropout of 0.25, 0.25, and 0.5 after each MaxPooling layer respectively
+improved_model = keras.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout( ),  # Add dropout
+    
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    #                ,  # Add dropout
+    
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    #                ,  # Add dropout before output
+    layers.Dense(1, activation='sigmoid')
+])
+# Recompile and Train the improved model (after addressing overfitting using dropout)
+improved_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+history_improved = improved_model.fit(train_generator, validation_data=validation_generator, epochs=15)
+\end{lstlisting}
+
+
+\newpage
+\subsection*{8.2 Fix 2: Add Data Augmentation}
+Modify the ImageDataGenerator to create more variations:
+\begin{lstlisting}[language=Python]
+augmented_datagen = ImageDataGenerator(
+    rescale=1./255,
+    rotation_range=20,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    horizontal_flip=True,
+    validation_split=0.2
+)
+
+train_augmented = augmented_datagen.flow_from_directory(
+    train_path,
+    target_size=(IMG_HEIGHT, IMG_WIDTH),
+    batch_size=BATCH_SIZE,
+    class_mode='binary',
+    subset='training'
+)
+
+# Then retrain the improved model with augmented_datagen
+final_model = keras.Sequential([
+    # Same architecture as improved_model
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout(0.25),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Dropout(0.25),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dropout(0.5),
+    layers.Dense(1, activation='sigmoid')
+])
+
+final_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+history_final = final_model.fit(train_augmented, validation_data=validation_generator, epochs=15)
+\end{lstlisting}
+
+
+\newpage
+\begin{enumerate}
+    \item Before adding Dropout/Augmentation, what were your train and validation accuracies? \\ 
+    . \\
+    Train: \\\textcolor{blue}{0.6175 }% \hspace{1cm} 
+   Validation: \textcolor{blue}{0.5816  }\%
+
+    \item After adding Dropout and Augmentation, what happened to training accuracy (increased, decreased, or stayed same)? \\ 
+    . \\
+    Train: \textcolor{blue}{0.6500 }%
+
+    \item After adding Dropout and Augmentation, what happened to validation accuracy (increased, decreased, or stayed same)? \\ 
+    . \\
+    Validation: \textcolor{blue}{Decreased from 0.6175 to 0.5612}\%
+    
+\end{enumerate}
+
+\subsection*{Question 8.3}
+Paste the before/after validation accuracy plot here:
+
+
+\begin{lstlisting}[language=Python]
+plt.plot(history_cnn.history['val_accuracy'], label='CNN (Overfit)', marker='o')
+plt.plot(history_final.history['val_accuracy'], label='CNN + Dropout + Augment', marker='s')
+plt.xlabel('Epoch')
+plt.ylabel('Validation Accuracy')
+plt.legend()
+plt.title('Improving Generalization')
+plt.grid(True)
+plt.show()
+\end{lstlisting}
+\begin{center}
+    \centering
+    \includegraphics[width=0.5\linewidth]{4.png}
+  
+\end{figure}
+
+
+\newpage
+
+\section*{Step 9: Test on Real Images}
+
+Find a hot dog image online (or take a photo) and test your model:
+
+\begin{lstlisting}[language=Python]
+from tensorflow.keras.preprocessing import image
+import requests
+from io import BytesIO
+
+def predict_image(img_url):
+    # Download image
+    response = requests.get(img_url)
+    img = image.load_img(BytesIO(response.content), target_size=(IMG_HEIGHT, IMG_WIDTH))
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0) / 255.0
+
+    # Predict
+    prediction = final_model.predict(img_array)[0][0]
+    if prediction > 0.5:
+        print(f" HOT DOG! (confidence: {prediction:.2f})")
+    else:
+        print(f" NOT A HOT DOG! (confidence: {1-prediction:.2f})")
+
+    # Show image
+    plt.imshow(img)
+    plt.axis('off')
+    plt.show()
+
+# Test on a hot dog image URL (find one on Google Images)
+predict_image("https://example.com/hotdog.jpg") # REPLACE WITH REAL URL
+\end{lstlisting}
+\begin{enumerate}
+    \item Paste a screenshot of your model predicting on a REAL image (not from the dataset): 
+  \begin{center}
+      \centering
+      \includegraphics[width=0.5\linewidth]{5.png}
+      \caption{Enter Caption}
+      \label{fig:placeholder}
+  \end{figure}
+    \item Did your model ever make a funny mistake (e.g., calling a hamburger a hot dog)? What did it confuse?
+\end{enumerate}
+\newline \textcolor{blue}{Yes it does confuse and make mistakes because of certain similar features like the bun or sauces.}
+
+
+
+\newpage
+
+\section*{Step 10: Optional Stretch Goal \\ YOLO Object Detection (Extra Credit)}
+
+If you finish early and want to impress, add a bounding box using a pre-trained YOLO model:
+
+\begin{lstlisting}[language=Python]
+!pip install ultralytics -q
+from ultralytics import YOLO
+
+# Load a tiny pre-trained model
+yolo_model = YOLO("yolov8n.pt") # n = nano (fast, small)
+
+# Run detection on your hot dog image
+results = yolo_model("path_to_hotdog_image.jpg")
+
+# Show results (it will draw boxes around objects it recognizes)
+results[0].show()
+\end{lstlisting}
+
+\subsection*{Extra Credit Question}
+Does YOLO correctly detect a "hot dog" as a class? What label does it give? 
+
+\newpage
+
+\section*{Final Submission Checklist}
+
+\begin{itemize}
+    \item [ ] Step 2: TensorFlow version answer
+    \item [ ] Step 3: Image counts and balance explanation
+    \item [ ] Step 4: Screenshot of 6 images + shape answer
+    \item [ ] Step 6: ANN accuracy + explanation + screenshot
+    \item [ ] Step 7: CNN accuracy + comparison + plot screenshot
+    \item [ ] Step 8: Overfitting before/after numbers + plot screenshot
+    \item [ ] Step 9: Real image prediction screenshot + mistake explanation
+    \item [ ] Step 10: (Extra credit) YOLO results screenshot
+    \item [ ] Submit this handout (with all answers filled) + link to your Colab notebook
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!70!black, title= Remember]
+The exam will ask you specific questions about YOUR project. \\
+If you run the code yourself, you will know the answers easily. \\
+If you copy from someone else, you will fail the exam. \\
+\textbf{Good luck and have fun!}
+\end{tcolorbox}
+
+\end{document}
